@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Setup Game Board"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/txtGameID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="ID: "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spinnerAddShips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView6"
+        android:layout_toStartOf="@+id/textView6"
+        android:background="#799ce6"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/spinnerAddRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/spinnerAddShips"
+        android:entries="@array/rows"
+        android:spinnerMode="dropdown"
+        android:background="#799ce6"
+        />
+
+    <Spinner
+        android:id="@+id/spinnerAddCols"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_marginStart="108dp"
+        android:layout_toEndOf="@+id/spinnerAddShips"
+        android:entries="@array/columns"
+        android:focusable="false"
+        android:spinnerMode="dropdown"
+        android:background="#799ce6"
+        />
+    <Spinner
+        android:id="@+id/spinnerAddDirection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtGameID"
+        android:layout_marginStart="198dp"
+        android:layout_toEndOf="@+id/spinnerAddShips"
+        android:entries="@array/direction"
+        android:focusable="false"
+        android:spinnerMode="dropdown"
+        android:background="#799ce6"
+        />
+    <Button
+        android:id="@+id/btnAddShip"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/spinnerAddCols"
+        android:layout_below="@+id/spinnerAddRow"
+        android:onClick="addShipOnClick"
+        android:text="Add Ship" />
+
+    <com.example.terrybrown.battleship.BoardView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/defensiveGameGridView"
+        android:layout_below="@+id/btnAddShip" />
+
+    <com.example.terrybrown.battleship.ComputerBoardView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/offensiveGameGridView"
+        android:layout_below="@+id/btnAddShip"
+        android:visibility="invisible"
+        />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/offensiveGameGridView"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnAddShip"
+        android:layout_toStartOf="@+id/btnAddShip"
+        android:onClick="switchBoardsOnClick"
+        >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Defense Board"
+            android:id="@+id/radioDefense"
+            android:checked="true"
+            android:onClick="switchBoardsOnClick"
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Offense Board"
+            android:id="@+id/radioOffense"
+            android:checked="false"
+            android:onClick="switchBoardsOnClick"
+            />
+
+    </RadioGroup>
+
+</RelativeLayout>
